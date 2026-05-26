@@ -13,6 +13,15 @@
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-skill-blue)](https://openclaw.ai)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
+## Live Telemetry
+
+![Token usage dashboard](docs/dashboard.png)
+*30-day production tracker · 12,847 calls · 61.2M tokens · live SQLite-backed*
+
+![Swagger UI](docs/screenshot-swagger.png)
+*FastAPI gateway · 6 endpoints · OpenAPI 3.1*
+
+
 ## Why this exists
 
 SE Asia ops teams chat in Indonesian, write tickets in English, and read upstream docs in Chinese (Xiaomi, Alibaba, Tencent SDKs). Routing every translation hop through a top-tier reasoning model burns 30-50% of context budget on **boilerplate** that doesn't need GPT-5 reasoning.

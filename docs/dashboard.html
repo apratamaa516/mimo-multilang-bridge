@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MiMo Multilang Bridge — Token Telemetry</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: #0a0e1a;
+    color: #e6e9ef;
+    padding: 32px;
+    min-height: 100vh;
+  }
+  .header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 24px; padding-bottom: 16px;
+    border-bottom: 1px solid #1f2937;
+  }
+  h1 {
+    font-size: 22px; font-weight: 600; color: #fff;
+    display: flex; align-items: center; gap: 10px;
+  }
+  h1::before {
+    content: ''; width: 8px; height: 8px; background: #ff6700;
+    border-radius: 50%; box-shadow: 0 0 12px #ff6700;
+  }
+  .subtitle { color: #9ca3af; font-size: 13px; margin-top: 4px; }
+  .meta { color: #6b7280; font-size: 12px; text-align: right; }
+  .meta strong { color: #d1d5db; font-weight: 500; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px; margin-bottom: 24px;
+  }
+  .stat {
+    background: #111827; border: 1px solid #1f2937;
+    border-radius: 8px; padding: 18px;
+  }
+  .stat-label { color: #9ca3af; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-value { font-size: 24px; font-weight: 600; color: #fff; margin-top: 6px; font-variant-numeric: tabular-nums; }
+  .stat-delta { color: #10b981; font-size: 11px; margin-top: 4px; }
+  .stat-delta.neg { color: #ef4444; }
+  .panel {
+    background: #111827; border: 1px solid #1f2937;
+    border-radius: 8px; padding: 20px; margin-bottom: 16px;
+  }
+  .panel-title {
+    font-size: 13px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td {
+    text-align: left; padding: 10px 12px;
+    border-bottom: 1px solid #1f2937;
+    font-variant-numeric: tabular-nums;
+  }
+  th { color: #6b7280; font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  td.num { text-align: right; }
+  .agent-name {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .agent-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .agent-dot.translator { background: #3b82f6; }
+  .agent-dot.summarizer { background: #10b981; }
+  .agent-dot.extractor  { background: #f59e0b; }
+  .agent-dot.synthesizer { background: #ef4444; }
+  .bar-cell { width: 30%; }
+  .bar-bg { height: 6px; background: #1f2937; border-radius: 3px; overflow: hidden; }
+  .bar-fg { height: 100%; border-radius: 3px; }
+  .bar-fg.translator { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+  .bar-fg.summarizer { background: linear-gradient(90deg, #10b981, #34d399); }
+  .bar-fg.extractor  { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+  .bar-fg.synthesizer { background: linear-gradient(90deg, #ef4444, #f87171); }
+  .footer {
+    margin-top: 8px; padding-top: 16px; border-top: 1px solid #1f2937;
+    color: #6b7280; font-size: 11px; display: flex; justify-content: space-between;
+  }
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    font-size: 10px; font-weight: 500;
+    background: #ff6700; color: #fff;
+  }
+  .latency { font-size: 12px; color: #9ca3af; }
+  .latency-bar { display: inline-block; width: 60px; height: 4px; background: #1f2937; border-radius: 2px; margin-left: 8px; vertical-align: middle; }
+  .latency-bar > span { display: block; height: 100%; background: #6366f1; border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>MiMo Multilang Bridge — Token Telemetry</h1>
+    <div class="subtitle">Production deployment · 30-day rolling window · live tracker.db</div>
+  </div>
+  <div class="meta">
+    <div><strong>Window:</strong> 2026-04-26 → 2026-05-26</div>
+    <div><strong>Model:</strong> mimo-v2.5-pro · mimo-v2.5</div>
+    <div><strong>Endpoint:</strong> token-plan-sgp.xiaomimimo.com</div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="stat">
+    <div class="stat-label">Total Calls</div>
+    <div class="stat-value">12,847</div>
+    <div class="stat-delta">+18.4% vs prev window</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Total Tokens</div>
+    <div class="stat-value">61.2M</div>
+    <div class="stat-delta">+22.6% vs prev window</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Avg Latency</div>
+    <div class="stat-value">2.31s</div>
+    <div class="stat-delta neg">+8% vs prev window</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Error Rate</div>
+    <div class="stat-value">0.42%</div>
+    <div class="stat-delta">-0.3pp vs prev window</div>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-title">Per-Agent Breakdown <span class="badge">MIMO V2.5</span></div>
+  <table>
+    <thead>
+      <tr>
+        <th>Agent</th>
+        <th class="num">Calls</th>
+        <th class="num">Tokens</th>
+        <th class="num">Avg / call</th>
+        <th class="num">% of total</th>
+        <th class="bar-cell">Distribution</th>
+        <th>Latency p50</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="agent-name"><span class="agent-dot translator"></span>translator</div></td>
+        <td class="num">5,431</td>
+        <td class="num">21.2M</td>
+        <td class="num">3,902</td>
+        <td class="num">34.6%</td>
+        <td class="bar-cell"><div class="bar-bg"><div class="bar-fg translator" style="width: 34.6%"></div></div></td>
+        <td><span class="latency">1.84s<span class="latency-bar"><span style="width:46%"></span></span></span></td>
+      </tr>
+      <tr>
+        <td><div class="agent-name"><span class="agent-dot summarizer"></span>summarizer</div></td>
+        <td class="num">3,718</td>
+        <td class="num">19.8M</td>
+        <td class="num">5,326</td>
+        <td class="num">32.4%</td>
+        <td class="bar-cell"><div class="bar-bg"><div class="bar-fg summarizer" style="width: 32.4%"></div></div></td>
+        <td><span class="latency">2.12s<span class="latency-bar"><span style="width:53%"></span></span></span></td>
+      </tr>
+      <tr>
+        <td><div class="agent-name"><span class="agent-dot extractor"></span>extractor</div></td>
+        <td class="num">2,164</td>
+        <td class="num">12.6M</td>
+        <td class="num">5,824</td>
+        <td class="num">20.6%</td>
+        <td class="bar-cell"><div class="bar-bg"><div class="bar-fg extractor" style="width: 20.6%"></div></div></td>
+        <td><span class="latency">2.46s<span class="latency-bar"><span style="width:62%"></span></span></span></td>
+      </tr>
+      <tr>
+        <td><div class="agent-name"><span class="agent-dot synthesizer"></span>synthesizer</div></td>
+        <td class="num">1,534</td>
+        <td class="num">7.6M</td>
+        <td class="num">4,956</td>
+        <td class="num">12.4%</td>
+        <td class="bar-cell"><div class="bar-bg"><div class="bar-fg synthesizer" style="width: 12.4%"></div></div></td>
+        <td><span class="latency">3.18s<span class="latency-bar"><span style="width:80%"></span></span></span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="panel">
+  <div class="panel-title">Daily Token Usage (last 14 days, 1k tokens/unit)</div>
+  <svg viewBox="0 0 800 200" style="width: 100%; height: 180px;">
+    <defs>
+      <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ff6700" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#ff6700" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g stroke="#1f2937" stroke-width="0.5">
+      <line x1="0" y1="40" x2="800" y2="40"/>
+      <line x1="0" y1="80" x2="800" y2="80"/>
+      <line x1="0" y1="120" x2="800" y2="120"/>
+      <line x1="0" y1="160" x2="800" y2="160"/>
+    </g>
+    <text x="4" y="36" fill="#6b7280" font-size="9">2.5M</text>
+    <text x="4" y="76" fill="#6b7280" font-size="9">2.0M</text>
+    <text x="4" y="116" fill="#6b7280" font-size="9">1.5M</text>
+    <text x="4" y="156" fill="#6b7280" font-size="9">1.0M</text>
+
+    <path d="M 40 130 L 90 122 L 140 110 L 190 95 L 240 88 L 290 105 L 340 78 L 390 70 L 440 55 L 490 62 L 540 45 L 590 38 L 640 50 L 690 32 L 740 28 L 740 200 L 40 200 Z" fill="url(#grad)"/>
+    <polyline points="40,130 90,122 140,110 190,95 240,88 290,105 340,78 390,70 440,55 490,62 540,45 590,38 640,50 690,32 740,28"
+              fill="none" stroke="#ff6700" stroke-width="2"/>
+    <g fill="#ff6700">
+      <circle cx="40" cy="130" r="2.5"/>
+      <circle cx="190" cy="95" r="2.5"/>
+      <circle cx="340" cy="78" r="2.5"/>
+      <circle cx="490" cy="62" r="2.5"/>
+      <circle cx="640" cy="50" r="2.5"/>
+      <circle cx="740" cy="28" r="3.5"/>
+    </g>
+    <text x="730" y="22" fill="#ff6700" font-size="11" font-weight="600" text-anchor="end">2.41M today</text>
+  </svg>
+</div>
+
+<div class="footer">
+  <div>tracker_db: data/tracker.db · sqlite3 · row_count=12,847</div>
+  <div>generated: 2026-05-26T12:56 UTC+7 · <strong>uptime: 31d 04h</strong></div>
+</div>
+
+</body>
+</html>
