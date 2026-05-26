@@ -1,5 +1,12 @@
 # MiMo Multilang Bridge ⚡
 
+[![CI](https://github.com/apratamaa516/mimo-multilang-bridge/actions/workflows/ci.yml/badge.svg)](https://github.com/apratamaa516/mimo-multilang-bridge/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Powered by Xiaomi MiMo](https://img.shields.io/badge/powered%20by-Xiaomi%20MiMo%20V2.5-ff6700)](https://platform.xiaomimimo.com/)
+[![OpenClaw Skill](https://img.shields.io/badge/OpenClaw-compatible-7c3aed)](https://github.com/openclaw)
+
+
 > Drop-in translation + summarization gateway for **Indonesian / English / Chinese** ops, powered by **Xiaomi MiMo V2.5**.
 
 [![MiMo](https://img.shields.io/badge/Powered%20by-Xiaomi%20MiMo%20V2.5-orange)](https://platform.xiaomimimo.com)
