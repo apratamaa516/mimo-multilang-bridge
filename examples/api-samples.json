@@ -1,0 +1,28 @@
+{
+  "translate_zh_to_id": {
+    "request": {
+      "text": "阿里云对象存储 OSS 是一种海量、安全、低成本、高可靠的云存储服务",
+      "target": "id"
+    },
+    "response": {
+      "text": "Alibaba Cloud Object Storage Service (OSS) adalah layanan penyimpanan cloud yang masif, aman, hemat biaya, dan sangat andal",
+      "source": "zh",
+      "target": "id",
+      "passes": [
+        {"name": "literal", "model": "mimo-v2.5", "tokens": 1121},
+        {"name": "idiomatic", "model": "mimo-v2.5", "tokens": 1184},
+        {"name": "review", "model": "mimo-v2.5", "tokens": 1098}
+      ]
+    }
+  },
+  "synthesize_full": {
+    "tokens_total": 12271,
+    "agents": {
+      "translator": 3403,
+      "summarizer": 4853,
+      "extractor": 2891,
+      "synthesizer": 1124
+    },
+    "wall_clock_seconds": 11.7
+  }
+}
